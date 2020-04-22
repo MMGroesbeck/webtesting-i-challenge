@@ -28,5 +28,9 @@ function repair(item) {
 }
 
 function get(item) {
-  return { ...item };
+  const prefix = item.enhancement > 0 ? `[+${item.enhancement}] ` : ``;
+  return {
+    ...item,
+    name: prefix + item.name
+  };
 }

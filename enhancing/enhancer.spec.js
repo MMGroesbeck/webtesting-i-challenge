@@ -94,8 +94,29 @@ describe("enhancer.js", function () {
     });
   });
   describe(".get(item)", () => {
-    it.todo(
-      ".get(item) returns a new item with name edited to be same if enhancement = 0, [+<enhancement>] <name> if enhancement > 0"
-    );
+    it("should return a new item, name: [+<enhancement>] <name> iff enhancement > 0", () => {
+      expect(
+        enhancer.get({
+          name: "seam ripper",
+          durability: 71,
+          enhancement: 0,
+        })
+      ).toEqual({
+        name: "seam ripper",
+        durability: 71,
+        enhancement: 0,
+      });
+      expect(
+          enhancer.get({
+            name: "flaming poisoning raging sword of doom",
+            durability: 100,
+            enhancement: 20
+        })
+      ).toEqual({
+        name: "[+20] flaming poisoning raging sword of doom",
+        durability: 100,
+        enhancement: 20
+    });
+    });
   });
 });
